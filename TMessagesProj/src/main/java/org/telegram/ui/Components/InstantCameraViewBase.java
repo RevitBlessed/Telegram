@@ -54,7 +54,7 @@ public abstract class InstantCameraViewBase extends FrameLayout {
             SharedSettings.roundVideoCamera2Enabled.get() :
             AppGlobalConfig.getInstance(UserConfig.selectedAccount).roundVideoRecorder2Allowed.get();
 
-        return useCamera2Impl
+        return useCamera2Impl || delegate.isMultiSegmentRoundVideoEnabled()
                 ? new InstantCameraView2(context, delegate, resourcesProvider, isNewDesign)
                 : new InstantCameraView(context, delegate, resourcesProvider, isNewDesign);
     }
@@ -114,6 +114,12 @@ public abstract class InstantCameraViewBase extends FrameLayout {
     /** Switches between recording and recorded-video preview. */
     public abstract void togglePause();
 
+    /** Uses the same guarded camera flip as the on-screen camera control. */
+    public abstract void flipCamera();
+
+    /** Selects the opposite camera before the next recording session is created. */
+    public abstract void flipCameraOnNextStart();
+
     /** Returns whether recording is paused or changing pause state. */
     public abstract boolean isPaused();
 
@@ -142,6 +148,15 @@ public abstract class InstantCameraViewBase extends FrameLayout {
 
     /** Cancels the active recording. */
     public abstract void cancel(boolean byGesture);
+
+    /** Removes the selected item from a multi-round review, when available. */
+    public boolean deleteSelectedBatchSegment() {
+        return false;
+    }
+
+    public boolean canResumeBatchRecording() {
+        return false;
+    }
 
     /** Returns the camera controls container. */
     public abstract View getButtonsLayout();
