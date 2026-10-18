@@ -1,4 +1,18 @@
-## Telegram messenger for Android
+# Round Video UX Upgrades — Telegram for Android
+
+Three integrated improvements: **flip-and-lock gesture**, **up to five 60-second round videos per recording**, and **countdown haptics**.
+
+An unofficial submission fork of [DrKLO/Telegram](https://github.com/DrKLO/Telegram), based on `f32ffeec763f0bdbf4bec25b52d654f77bff733d` (13.0.2 / 7175). Upstream source and license notices are preserved.
+
+- [Submission branch](https://github.com/RevitBlessed/Telegram/tree/contest/round-video-upgrades)
+- [Implementation and integration guide](ROUND_VIDEO_UPGRADES.md)
+- [Build instructions and APK provenance](docs/round-video/BUILD.md)
+- [Validation and reviewer checklist](docs/round-video/VALIDATION.md)
+- [v1.0.2 source tag: independent edited-circle export](https://github.com/RevitBlessed/Telegram/tree/round-video-v1.0.2)
+
+The release includes pause/resume and selected-item deletion fixes. Before sending, every edited circle is now materialized as an independent MP4 with duration read back from that file, preventing multiple messages from sharing the continuous recording or displaying a trim duration that differs from playback. It is integrated into the Android app, not a standalone animation mockup. See the validation notes for testing scope; no Telegram certification is claimed.
+
+## Upstream Telegram messenger for Android
 
 [Telegram](https://telegram.org) is a messaging app with a focus on speed and security. It’s superfast, simple and free.
 This repo contains the official source code for [Telegram App for Android](https://play.google.com/store/apps/details?id=org.telegram.messenger).
